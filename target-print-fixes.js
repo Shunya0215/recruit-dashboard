@@ -7,55 +7,72 @@
     style.id = "targetPrintFixStyle";
     style.textContent = `
       @media print {
+        .target-report-page-actions[data-performance-compact="1"] .report-section-head {
+          margin-bottom: 9px;
+          padding-bottom: 8px;
+        }
+
+        .target-report-page-actions[data-performance-compact="1"] .report-section-title {
+          font-size: 21px;
+        }
+
+        .target-report-page-actions[data-performance-compact="1"] .report-section-head span {
+          font-size: 12px;
+        }
+
         .target-report-page-actions[data-performance-compact="1"] .target-report-actions-body {
-          grid-template-rows: auto auto minmax(0, 1fr);
-          gap: 5px;
+          height: auto;
+          grid-template-rows: auto auto auto;
+          align-content: start;
+          gap: 8px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-card,
         .target-report-page-actions[data-performance-compact="1"] .target-tips-card,
         .target-report-page-actions[data-performance-compact="1"] .target-prefecture-performance-card {
-          padding: 8px;
+          padding: 11px 12px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-card,
         .target-report-page-actions[data-performance-compact="1"] .target-tips-card {
-          gap: 5px;
+          gap: 8px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-grid {
-          gap: 5px;
+          gap: 8px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-item {
-          gap: 2px;
-          padding: 6px 7px;
+          gap: 5px;
+          min-height: 19mm;
+          padding: 9px 10px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-item strong {
-          font-size: 13px;
+          font-size: 18px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-item span,
         .target-report-page-actions[data-performance-compact="1"] .target-tip-item strong {
-          font-size: 9px;
+          font-size: 12px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-wage-item small,
         .target-report-page-actions[data-performance-compact="1"] .target-tip-item span,
         .target-report-page-actions[data-performance-compact="1"] .target-source-note {
-          font-size: 7.5px;
-          line-height: 1.22;
+          font-size: 10px;
+          line-height: 1.35;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-tips-list {
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 3px;
+          gap: 6px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-tip-item {
-          gap: 2px;
-          padding: 4px 6px;
+          gap: 4px;
+          min-height: 13mm;
+          padding: 7px 10px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-tip-item span {
@@ -67,15 +84,17 @@
 
         .target-report-page-actions[data-performance-compact="1"] .target-section-heading h2,
         .target-report-page-actions[data-performance-compact="1"] .target-prefecture-performance-card .panel-heading h2 {
-          font-size: 13px;
+          font-size: 17px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-prefecture-performance-card {
           display: grid;
           min-height: 0;
-          height: 100%;
-          grid-template-rows: auto minmax(0, 1fr);
-          gap: 4px;
+          height: auto;
+          max-height: 80mm;
+          grid-template-rows: auto auto;
+          gap: 8px;
+          overflow: hidden;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .target-prefecture-performance-card .panel-heading {
@@ -84,28 +103,29 @@
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-grid {
           min-height: 0;
-          height: 100%;
-          gap: 5px;
-          align-items: stretch;
+          height: auto;
+          gap: 9px;
+          align-items: start;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-panel {
           display: grid;
           min-height: 0;
-          grid-template-rows: auto minmax(0, 1fr);
-          padding: 6px;
+          height: auto;
+          grid-template-rows: auto auto;
+          padding: 9px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-panel .panel-heading {
-          margin-bottom: 4px;
+          margin-bottom: 6px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-panel .panel-heading h2 {
-          font-size: 10.5px;
+          font-size: 13px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-panel .panel-heading span {
-          font-size: 7.5px;
+          font-size: 10px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-list,
@@ -114,34 +134,34 @@
           max-height: none;
           overflow: visible;
           align-content: start;
-          gap: 3px;
+          gap: 5px;
           padding-right: 0;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-row {
-          gap: 2px 5px;
-          padding: 3px 5px;
+          gap: 4px 8px;
+          padding: 6px 8px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-row i {
-          height: 3px;
+          height: 4px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-line {
-          grid-template-columns: minmax(64px, 1fr) max-content;
-          gap: 4px;
+          grid-template-columns: minmax(82px, 1fr) max-content;
+          gap: 5px 8px;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-row strong,
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-row em,
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-line span {
-          font-size: 8.5px;
-          line-height: 1.2;
+          font-size: 11px;
+          line-height: 1.25;
         }
 
         .target-report-page-actions[data-performance-compact="1"] .prefecture-breakdown-row small {
-          margin-top: 1px;
-          font-size: 7.5px;
+          margin-top: 2px;
+          font-size: 9.5px;
         }
       }
     `;
