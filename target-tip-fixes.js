@@ -34,6 +34,7 @@
       text: "給与訴求型、時間訴求型、勤務地訴求型の3パターンで原稿を分けると、改善幅を検証しやすくなります。"
     }
   ];
+  const touchedSignatures = new Set();
 
   function createTipItem(tip, index) {
     const item = document.createElement("div");
@@ -87,6 +88,9 @@
   function ensureMinimumTips() {
     const list = document.querySelector("#targetAnalysisResult .target-tips-list[data-target-strategy-signature]");
     if (!list) return;
+    const signature = list.dataset.targetStrategySignature || "";
+    const status = list.closest(".target-tips-card")?.querySelector(".target-tip-status")?.textContent?.trim() || "";
+    if (status === "編集済み" || touchedSignatures.has(signature)) return;
     const items = [...list.querySelectorAll("[data-target-tip-item]")];
     if (!items.length || items.length >= MIN_TIP_COUNT) return;
 
@@ -101,9 +105,21 @@
     });
   }
 
+  function rememberTouchedList(target) {
+    const list = target.closest?.("#targetAnalysisResult .target-tips-list[data-target-strategy-signature]");
+    const signature = list?.dataset.targetStrategySignature || "";
+    if (signature) touchedSignatures.add(signature);
+  }
+
   const observer = new MutationObserver(() => ensureMinimumTips());
   document.addEventListener("DOMContentLoaded", () => {
     ensureMinimumTips();
     observer.observe(document.body, { childList: true, subtree: true });
   });
+  document.addEventListener("click", (event) => {
+    if (event.target.closest?.("[data-target-tip-delete]")) rememberTouchedList(event.target);
+  }, true);
+  document.addEventListener("input", (event) => {
+    if (event.target.matches?.("[data-target-tip-title], [data-target-tip-text]")) rememberTouchedList(event.target);
+  }, true);
 })();
