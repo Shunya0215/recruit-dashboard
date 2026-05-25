@@ -287,7 +287,7 @@
         const parsed = parseCsv(text);
         const kind = detectKind(parsed.headers);
         if (kind) {
-          nextRaw[kind].push(...normalizeRows(kind, parsed.rows));
+          appendRows(nextRaw[kind], normalizeRows(kind, parsed.rows));
           names.push(file.name);
         }
       }
@@ -315,6 +315,12 @@
       dom.loadStatus.classList.remove("ready");
     }
     if (dom.fileSummary) dom.fileSummary.textContent = summary;
+  }
+
+  function appendRows(target, rows) {
+    for (let index = 0; index < rows.length; index += 1) {
+      target.push(rows[index]);
+    }
   }
 
   function waitForPaint() {
